@@ -1,3 +1,5 @@
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, fit, backgrounds}
 % Chapter 1
 
 \chapter{Introduction and Motivation} % Main chapter title
@@ -12,6 +14,47 @@ Federated Learning emerges as a solution to these problems by fundamentally chan
 \begin{quote}
 \textit{Instead of bringing data to a central model, the model is brought to the data.}
 \end{quote}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=1.5cm and 2cm,
+        client/.style={rectangle, draw, rounded corners, fill=blue!10, text centered, minimum width=2cm, minimum height=1cm, font=\sffamily},
+        server/.style={cylinder, draw, shape border rotate=90, aspect=0.25, fill=red!10, minimum height=2cm, minimum width=2.5cm, text centered, font=\sffamily\bfseries},
+        arrow/.style={-{Stealth[length=2.5mm]}, thick, draw=black!70},
+        bidir/.style={<->, >=Stealth, thick, draw=black!70}
+    ]
+    
+    % --- Centralized Learning (Left Side) ---
+    \node (c_title) [font=\sffamily\bfseries] {Centralized Learning};
+    \node[server, below=1cm of c_title] (c_server) {Central\\Server};
+    
+    \node[client, left=2cm of c_server, yshift=2cm] (c_client1) {Client A};
+    \node[client, left=2cm of c_server] (c_client2) {Client B};
+    \node[client, left=2cm of c_server, yshift=-2cm] (c_client3) {Client C};
+    
+    \draw[arrow] (c_client1) -- node[above, sloped, font=\scriptsize, align=center] {Raw Data} (c_server);
+    \draw[arrow] (c_client2) -- node[above, font=\scriptsize, align=center] {Raw Data} (c_server);
+    \draw[arrow] (c_client3) -- node[below, sloped, font=\scriptsize, align=center] {Raw Data} (c_server);
+
+    % --- Divider Line ---
+    \draw[dashed, thick, draw=gray] (1.5, 0.5) -- (1.5, -6.5);
+
+    % --- Federated Learning (Right Side) ---
+    \node[right=6cm of c_title, font=\sffamily\bfseries] (f_title) {Federated Learning};
+    \node[server, below=1cm of f_title, fill=green!10] (f_server) {Global\\Model};
+    
+    \node[client, right=2cm of f_server, yshift=2cm] (f_client1) {Client A};
+    \node[client, right=2cm of f_server] (f_client2) {Client B};
+    \node[client, right=2cm of f_server, yshift=-2cm] (f_client3) {Client C};
+    
+    \draw[bidir] (f_client1) -- node[above, sloped, font=\scriptsize, align=center] {Model Updates} (f_server);
+    \draw[bidir] (f_client2) -- node[above, font=\scriptsize, align=center] {Model Updates} (f_server);
+    \draw[bidir] (f_client3) -- node[below, sloped, font=\scriptsize, align=center] {Model Updates} (f_server);
+    
+    \end{tikzpicture}
+    \caption{A structural comparison between traditional Centralized Machine Learning (sharing raw data) and Federated Learning (sharing model updates).}
+    \label{fig:paradigm_shift}
+\end{figure}
 
 This shift enables collaborative learning while keeping data localized. However, an important question arises:
 
