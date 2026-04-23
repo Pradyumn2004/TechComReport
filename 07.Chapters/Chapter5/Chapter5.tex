@@ -1,0 +1,44 @@
+% Chapter 5
+
+\chapter{Trade-offs, Emerging Directions, and Conclusion}
+\label{ch:chapter5}
+
+\section{Fundamental Trade-offs}
+
+\subsection{Privacy vs Accuracy}
+
+Stronger privacy (more noise) reduces model performance. This is an inherent tension in differential privacy-based approaches.
+
+\subsection{Robustness vs Flexibility}
+
+Handling heterogeneous data often conflicts with robustness to attacks.
+
+\subsection{Security vs Efficiency}
+
+Encryption and secure aggregation increase computational cost, creating a trade-off between the strength of security guarantees and system efficiency.
+
+\section{Emerging Research Directions}
+
+To address current limitations, several approaches are being explored:
+
+\subsection{Personalized Federated Learning}
+Models adapt to individual clients rather than enforcing a single global model, enabling better performance on non-IID data.
+
+\subsection{Multi-center Federated Learning}
+Groups similar clients to improve performance by reducing the effects of statistical heterogeneity.
+
+\subsection{Reliable Client Selection}
+Uses trust or reputation systems to reduce malicious influence during the aggregation process \cite{li2021blockchain}.
+
+\subsection{Advanced Privacy Techniques}
+Improving differential privacy and secure aggregation to provide stronger privacy guarantees with lower utility cost.
+
+\section{Conclusion}
+
+Federated Learning represents a significant shift in machine learning, offering a framework that aligns with modern privacy requirements. However, it does not fully solve the privacy problem. While it eliminates direct data sharing, it introduces new vulnerabilities through model updates, system heterogeneity, and adversarial behavior.
+
+\begin{quote}
+\textit{Federated Learning is not a complete solution---it is an evolving direction.}
+\end{quote}
+
+Future research must focus on developing robust, scalable, and secure federated systems that balance privacy, efficiency, and accuracy.

@@ -1,0 +1,23 @@
+% Appendix A
+
+\chapter{Appendix} % Main appendix title
+\label{app:appendixA}
+
+\section{Key Terms}
+
+\begin{description}
+    \item[Federated Learning (FL)] A decentralized machine learning paradigm where model training occurs on local devices without sharing raw data.
+    \item[Differential Privacy (DP)] A mathematical framework that provides formal privacy guarantees by adding calibrated noise to computations.
+    \item[Non-IID Data] Non-Independent and Identically Distributed data, where data across clients follows different distributions.
+    \item[Model Aggregation] The process of combining local model updates from multiple clients into a single global model.
+\end{description}
+
+\section{Example FL Workflow}
+
+A typical federated learning workflow proceeds as follows:
+
+\begin{center}
+Client $\rightarrow$ Local Training $\rightarrow$ Parameter Sharing $\rightarrow$ Server Aggregation $\rightarrow$ Updated Model
+\end{center}
+
+This cycle repeats over multiple communication rounds until the global model converges.

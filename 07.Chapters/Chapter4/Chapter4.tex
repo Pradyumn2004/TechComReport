@@ -1,0 +1,90 @@
+% Chapter 4
+
+\chapter{Challenges, Threats, and Defenses}
+\label{ch:chapter4}
+
+While FL improves privacy at a high level, it introduces new vulnerabilities and system challenges \cite{rodriguez2020federated}.
+
+\section{System-Level Challenges}
+
+\subsection{Statistical Heterogeneity (Non-IID Data)}
+
+Data across clients is often highly diverse. For example, medical data from different hospitals may follow completely different distributions. This leads to poor convergence and reduced model performance.
+
+\subsection{System Heterogeneity}
+
+Devices differ in:
+\begin{itemize}
+    \item Computational power
+    \item Network connectivity
+    \item Battery constraints
+\end{itemize}
+
+This results in delays, dropped updates, and inefficient training.
+
+\subsection{Communication Overhead}
+
+FL requires frequent communication between server and clients, which becomes costly at scale.
+
+\section{Threat Model}
+
+Federated systems introduce a broader attack surface:
+
+\begin{itemize}
+    \item \textbf{Insider attackers:} Clients or server with access to internal information
+    \item \textbf{Outsider attackers:} Intercept communication
+    \item \textbf{Honest-but-curious:} Follow protocol but attempt to extract information
+    \item \textbf{Malicious attackers:} Intentionally corrupt the system
+\end{itemize}
+
+\section{Integrity Attacks}
+
+\subsection{Data Poisoning}
+
+Attackers manipulate training data to degrade model performance.
+
+\subsection{Model Poisoning}
+
+Attackers directly alter model updates to influence the global model.
+
+\subsection{Backdoor Attacks}
+
+A particularly dangerous attack where:
+\begin{itemize}
+    \item Model behaves normally on standard inputs
+    \item Produces incorrect outputs for specific trigger patterns
+\end{itemize}
+
+These attacks are stealthy and difficult to detect.
+
+\section{Privacy Attacks}
+
+Even without access to raw data, attackers can infer sensitive information:
+
+\subsection{Gradient Inversion}
+
+Reconstructs training data from gradients \cite{zhu2019deep, geiping2020inverting}.
+
+\subsection{Membership Inference}
+
+Determines whether a data point was part of training.
+
+\vspace{0.5cm}
+These attacks highlight a critical insight:
+
+\begin{quote}
+\textit{Sharing gradients is not equivalent to preserving privacy.}
+\end{quote}
+
+\section{Defense Mechanisms}
+
+Several defenses exist but none are universally effective:
+
+\begin{itemize}
+    \item Robust aggregation (median, trimmed mean)
+    \item Differential privacy noise addition
+    \item Gradient compression
+    \item Anomaly detection for malicious clients
+\end{itemize}
+
+\textbf{Key Limitation:} No single defense can protect against all attack types simultaneously.

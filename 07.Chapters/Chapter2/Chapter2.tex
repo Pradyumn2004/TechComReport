@@ -1,0 +1,44 @@
+% Chapter 2
+
+\chapter{Federated Learning Framework and Methodology}
+\label{ch:chapter2}
+
+Federated Learning is a distributed learning framework where multiple clients (devices or organizations) collaboratively train a shared global model under the coordination of a central server \cite{mcmahan2017communication}.
+
+\section{Basic Workflow}
+
+The FL process typically follows these steps:
+
+\begin{enumerate}
+    \item A global model is initialized at the server.
+    \item The model is sent to selected client devices.
+    \item Each client trains the model locally using its private data.
+    \item Clients send updated model parameters (not raw data) back to the server.
+    \item The server aggregates these updates to form a new global model.
+    \item The process repeats over multiple rounds.
+\end{enumerate}
+
+This approach ensures that raw data never leaves the client device, which is the primary privacy advantage of FL.
+
+\section{Types of Federated Learning}
+
+Federated learning can be categorized based on how data is distributed:
+
+\begin{itemize}
+    \item \textbf{Horizontal FL:} Same features, different users (e.g., multiple banks with similar attributes but different customers).
+    \item \textbf{Vertical FL:} Same users, different features (e.g., bank + e-commerce platform sharing complementary information).
+    \item \textbf{Federated Transfer Learning:} Neither features nor users overlap significantly.
+\end{itemize}
+
+Each type introduces different technical and privacy challenges, particularly in terms of data alignment and secure computation \cite{zhang2021survey}.
+
+\section{Why Federated Learning is Important}
+
+\begin{itemize}
+    \item Enables collaboration without violating privacy laws
+    \item Reduces risk of centralized data breaches
+    \item Supports edge devices (e.g., smartphones, IoT systems)
+    \item Improves personalization while maintaining global learning
+\end{itemize}
+
+Despite these advantages, FL is not inherently secure---it only changes \textit{where} data resides, not \textit{how} information can be inferred.

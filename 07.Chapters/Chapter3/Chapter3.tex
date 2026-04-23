@@ -1,0 +1,62 @@
+% Chapter 3
+
+\chapter{Privacy Mechanisms and Optimization}
+\label{ch:chapter3}
+
+Although federated learning avoids direct data sharing, privacy is not automatically guaranteed. Several mechanisms are used to enhance privacy and efficiency.
+
+\section{Privacy-Preserving Techniques}
+
+\subsection{Model Aggregation}
+
+Clients send only model updates (gradients or parameters), which are aggregated at the server. This prevents direct access to raw data but does not fully eliminate information leakage \cite{zhu2019deep}.
+
+\subsection{Differential Privacy (DP)}
+
+Differential privacy introduces noise into model updates to prevent identification of individual data points. The formal guarantee is expressed as:
+
+\begin{equation}
+    P[\mathcal{M}(x) \in S] \leq e^{\epsilon} \cdot P[\mathcal{M}(y) \in S]
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\epsilon$: privacy budget
+    \item Lower $\epsilon \rightarrow$ stronger privacy but lower accuracy
+\end{itemize}
+
+This creates a fundamental trade-off between privacy and model performance.
+
+\subsection{Homomorphic Encryption}
+
+Homomorphic encryption allows computation on encrypted data so that the server never sees raw updates. While highly secure, it is computationally expensive and difficult to scale.
+
+\section{Federated Optimization: FedAvg Algorithm}
+
+The most widely used algorithm in FL is Federated Averaging (FedAvg) \cite{mcmahan2017communication}:
+
+\begin{equation}
+    G^{t} = G^{t-1} + \frac{\eta}{n} \sum_{i=1}^{n} \left( L_i^{t} - G^{t-1} \right)
+    \label{eq:fedavg}
+\end{equation}
+
+\subsection{Explanation}
+\begin{itemize}
+    \item Each client computes local updates
+    \item Updates are averaged to form a global model
+    \item Clients with more data often have greater influence
+\end{itemize}
+
+\subsection{Advantages}
+\begin{itemize}
+    \item Reduces communication rounds
+    \item Scalable to large networks
+    \item Efficient compared to centralized training
+\end{itemize}
+
+\subsection{Limitations of FedAvg}
+\begin{itemize}
+    \item Assumes data is similar across clients (often false)
+    \item Sensitive to malicious updates
+    \item Struggles with heterogeneous environments
+\end{itemize}

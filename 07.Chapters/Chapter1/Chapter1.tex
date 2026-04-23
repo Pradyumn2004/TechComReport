@@ -1,0 +1,22 @@
+% Chapter 1
+
+\chapter{Introduction and Motivation} % Main chapter title
+\label{ch:chapter1}
+
+The rapid advancement of machine learning has been fueled by access to large-scale data. However, despite the abundance of data, modern AI systems often struggle to utilize it effectively due to privacy, legal, and structural constraints. Regulations such as GDPR and other data protection laws restrict how data can be collected, stored, and shared. As a result, traditional centralized machine learning pipelines---where data is collected from multiple sources and stored in a single location---are increasingly impractical.
+
+Another major issue is the \textbf{data silo problem}, where data is distributed across multiple organizations or devices and cannot be easily shared. For example, hospitals, financial institutions, and personal devices each hold valuable data, but legal and ethical constraints prevent direct data pooling.
+
+Federated Learning emerges as a solution to these problems by fundamentally changing the learning paradigm:
+
+\begin{quote}
+\textit{Instead of bringing data to a central model, the model is brought to the data.}
+\end{quote}
+
+This shift enables collaborative learning while keeping data localized. However, an important question arises:
+
+\begin{quote}
+\textit{Does federated learning truly guarantee privacy, or does it only reduce certain risks while introducing new ones?}
+\end{quote}
+
+This report critically examines the privacy promise of federated learning, exploring its architecture, optimization techniques, privacy-preserving mechanisms, the evolving threat landscape, and the fundamental trade-offs involved \cite{mcmahan2017communication, zhang2021survey}.
